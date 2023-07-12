@@ -8,7 +8,7 @@
 print("Challenge 1:")
 
 # Check how many letters are in the password, 
-def how_many_Letters(password):
+def how_many_letters(password):
     letters_in_string = len(password);
 
     if (letters_in_string < 8):
@@ -18,9 +18,9 @@ def how_many_Letters(password):
 
 
 password = 'hellothere'; # create a variable called password
-how_many_Letters(password);
+how_many_letters(password);
 password = 'not8'; 
-how_many_Letters(password);
+how_many_letters(password);
 
 
 
@@ -171,7 +171,6 @@ num = 1234;
 print(is_palindrome(num));
 
 
-
 # Challenge 8:
 print("Challenge 8:");
 # Take the string “jrfndklhgfndjkjlkgperfijfhdknsadcvjhiiohjfkledsopiuhgtyujwsdxcvhgfdjhiopiwquhejkdsoiufghedjwshi”.
@@ -180,7 +179,7 @@ print("Challenge 8:");
 str = "jrfndklhgfndjkjlkgperfijfhdknsadcvjhiiohjfkledsopiuhgtyujwsdxcvhgfdjhiopiwquhejkdsoiufghedjwshi";
 vowels = ["a", "e", "i", "o", "u"];
 
-indexes = [x for x, letter in enumerate(str) if letter in vowels];
+indexes = [i for i, letter in enumerate(str) if letter in vowels];
 
 if (len(indexes) > 0):
     print(f"{len(indexes)} matches: {indexes}. \nThe last vowel is at index: {indexes[-1]}.");

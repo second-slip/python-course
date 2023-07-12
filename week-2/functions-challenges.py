@@ -42,7 +42,7 @@ def withdraw_from_account(amount, account, pin):
     if (is_funds_available(amount)) == False:
         return print("You don't have sufficient funds available to withdraw the requested amount.");
 
-    print(f"depensing £{amount} from your account: {account}.");
+    print(f"depensing £{amount} from your account number: {account}.");
 
     update_balance(amount);
 
