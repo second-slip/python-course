@@ -131,7 +131,7 @@ where_am_I(time, place_of_work, town_of_home);
 # Challenge 6:
 print("Challenge 6:");
 
-# Create an if statement that checks if the result of the sumis even. 
+# Create an if statement that checks if the result of the sum is even. 
 # If it is, return a success message.
 def is_even(number1, number2):
     number = number1 + number2;
