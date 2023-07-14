@@ -1,16 +1,52 @@
-# Loops
+# Activity(1):
+# Create a list of 4 favourite films
+# Use a for loop to show each film in the list
+# Create a function called film_check() that checks if the
+# 3rd film in the list is Ghostbusters.
+# If it is, it should print “yey it’s ghostbusters”. If it isn’t, it
+# should print “booo, we want ghostbusters”
 
-# list comprehension
-# newlist = [expression for item in iterable if condition == True]
+films = ["Pokemon", "Jurassic Park", "Ghostbusters", "Super Mario"]
 
-# recap functions
-def multiply_two_integers(num1, num2):
-    return num1 * num2
+def film_check(films):
+    i = 0
+    for film in films:
+        if (film == "Ghostbusters") and (i == 2):
+            print("yey it's ghostbusters")
+        else:
+            print("booo, we want ghostbusters")
+        i += 1
 
-result = multiply_two_integers(2, 2)
-print(result)
+film_check(films)
 
-# basic list
+
+# Activity(1):
+# Create a list of your
+# favourite website (3 of them), and then
+# add another two once you’ve created the list. Then remove
+# the last website.
+
+websites = ["Amazon", "Stack Overflow", "GitHub"]
+
+more_websites = ["Pluralsight", "Python Docs"]
+
+websites.extend(more_websites)
+
+print(websites)
+
+websites.pop()
+
+print(websites)
+
+# Activity(2):
+# Research on the following methods: remove(), reverse(), sort(),
+# count(), extend() (and many more). Create a program to
+# demonstrate the uses of each method, some of these you may
+# need more than one example. (Pay attention: not all methods
+# would permanently updates/make changes to the lists
+# themselves.)
+
+# list
 favourite_morrissey_songs = [
     "Suedehead",
     "The World Is Full of Crashing Bores",
@@ -78,65 +114,3 @@ print(index)
 # clear: removes all the elements
 favourite_morrissey_songs.clear()
 print(favourite_morrissey_songs)
-
-
-print("############################")
-print("### LOOPS ###")
-
-# for x in list:
-# for i in range(10)
-# for i in range(1, 11)
-
-# Activity(1):
-# Create a list of 4 favourite films
-# Use a for loop to show each film in the list
-# Create a function called film_check() that checks if the
-# 3rd film in the list is Ghostbusters.
-# If it is, it should print “yey it’s ghostbusters”. If it isn’t, it
-# should print “booo, we want ghostbusters”
-
-films = ["Pokemon", "Jurassic Park", "Ghostbusters", "Super Mario"]
-
-def film_check(films):
-    i = 0
-    for film in films:
-        if (film == "Ghostbusters") and (i == 2):
-            print("yey it's ghostbusters")
-        else:
-            print("booo, we want ghostbusters")
-        i += 1
-
-film_check(films)
-
-
-
-
-for i in range(0, 10):
-    print(i)
-
-for i in range(9, 0, -1):
-    print(i)
-
-print("######## WHILE LOOP")
-
-i = 0
-
-while i < 10:
-    i += 1
-    print(i)
-
-import random
-
-rand = random.randint(0, 50)
-my_num = 37
-counter = 1
-
-print("Start")
-
-while rand != my_num:
-    rand = random.randint(0, 50)
-    counter += 1
-    print(rand)
-
-print(f"{counter} times")
-

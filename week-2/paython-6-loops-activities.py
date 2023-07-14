@@ -77,6 +77,11 @@ x = int(x)
 create_multiplication_table(x);
 
 
+
+# Extra activity (DIFFICULT):
+# Create a program that checks whether all numbers
+# between 1 and 20 are prime numbers or not.
+
 print("############################")
 print("### PRIMES CHALLENGE ###")
 
@@ -93,4 +98,5 @@ def print_primes_in_range(start, end):
     primes = [i for i in range(start, end) if is_prime(i)]
     print(f"{len(primes)} primes found in range {start} - {end}. \nThe prime numbers are: {primes}.")
 
-print_primes_in_range(2, 1000) #(2,20)
+print_primes_in_range(2, 1000)
+

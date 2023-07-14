@@ -128,6 +128,7 @@ time = 19;
 where_am_I(time, place_of_work, town_of_home);
 
 
+
 # Challenge 6:
 print("Challenge 6:");
 
