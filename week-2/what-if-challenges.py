@@ -181,7 +181,7 @@ vowels = ["a", "e", "i", "o", "u"];
 
 indexes = [i for i, letter in enumerate(str) if letter in vowels];
 
-if (len(indexes) > 0):
+if len(indexes):
     print(f"{len(indexes)} matches: {indexes}. \nThe last vowel is at index: {indexes[-1]}.");
 else:
     print("no matches found");

@@ -2,16 +2,16 @@ print("############################")
 print("### PRIMES CHALLENGE ###")
 
 def is_prime(number):
-    if (number <= 1): 
-        return False 
-    for i in range(2,number): 
-        if (number % i) == 0: 
-            return False 
+    if number <= 1:
+        return False
+    for i in range(2, number):
+        if (number % i) == 0:
+            return False
     return True
 
-# create a list of integers from 2 - 1000
-ints = list(range(2, 1001))
-# create a new list of prime numbers
-primes = [i for i, number in enumerate(ints) if is_prime(number)]
+def print_primes_in_range(start, end):
+    # guards: start < end, etc?
+    primes = [i for i in range(start, end) if is_prime(i)]
+    print(f"{len(primes)} primes found. \nThe prime numbers are: {primes}.")
 
-print(f"{len(primes)} primes. \nThe primes are: {primes}.")
+print_primes_in_range(2, 1000) #(2,20)
