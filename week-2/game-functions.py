@@ -1,6 +1,5 @@
 
 
-
 def request_user_input(message):
     print(message)
     i = input()

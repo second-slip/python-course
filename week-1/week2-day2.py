@@ -228,4 +228,5 @@ print("The temperature is {}°F".format(get_fahrenheit(15)));
 
 dict_list=["a" "chilli"],["b", "biio"];
 print(dict_list[1],[1])
+print(dict_list)
 

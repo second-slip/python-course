@@ -17,6 +17,7 @@ while i < 10:
 # random number generated, check if this number of
 # divisible by 7 or not.
 
+
 def print_is_div_by_7():
     randomNum = random.randint(1, 30)
 
@@ -26,7 +27,7 @@ def print_is_div_by_7():
         print(f"{randomNum} is NOT divisable by 7")
 
 
-for i in range(0, 6): 
+for i in range(0, 6):
     print_is_div_by_7()
 
 
@@ -61,21 +62,25 @@ print(f"{i} times")
 # starts again and ask the user for a new
 # number every time it finishes.
 def multiply(num1, num2):
-    return num1 * num2;
+    return num1 * num2
+
 
 def printer(num1, num2, num3):
     print(f"{num1} x {num2} = {num3}")
 
+
 def create_multiplication_table(number):
     for i in range(1, 13):
-        result = multiply(i,number);
+        result = multiply(i, number)
         printer(number, i, result)
 
-print('Input a number to print its multiplication table:')
-x = input()
-x = int(x)
-create_multiplication_table(x);
 
+print("Input a number to print its multiplication table:")
+x = int(input())
+# x = input()
+# int(x)
+x = int(input())
+create_multiplication_table(x)
 
 
 # Extra activity (DIFFICULT):
@@ -85,6 +90,7 @@ create_multiplication_table(x);
 print("############################")
 print("### PRIMES CHALLENGE ###")
 
+
 def is_prime(number):
     if number <= 1:
         return False
@@ -93,10 +99,13 @@ def is_prime(number):
             return False
     return True
 
+
 def print_primes_in_range(start, end):
     # guards: start < end, etc?
     primes = [i for i in range(start, end) if is_prime(i)]
-    print(f"{len(primes)} primes found in range {start} - {end}. \nThe prime numbers are: {primes}.")
+    print(
+        f"{len(primes)} primes found in range {start} - {end}. \nThe prime numbers are: {primes}."
+    )
+
 
 print_primes_in_range(2, 1000)
-
