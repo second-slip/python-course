@@ -4,11 +4,11 @@ import random
 
 ##############################################
 # standard messages
-WRONG_ANSWER = "Oh, no: You got it wrong!  You lose 1 life..."
-RIGHT_ANSWER = "Yay!  You got it right.  You keep all your lives..."
-INALID_RESPONSE_INT = "Your response is not valid.  Type an integer"
+WRONG_ANSWER = "\nOh, no: You got it wrong!  You lose 1 life..."
+RIGHT_ANSWER = "\nYay!  You got it right.  You keep all your lives..."
+INALID_RESPONSE_INT = "\nYour response is not valid.  Type an integer"
 INALID_RESPONSE_YES_NO = (
-    "Your repose is invalid.  You must type either 'yes' or 'no'..."
+    "\nYour repose is invalid.  You must type either 'yes' or 'no'..."
 )
 
 ########################################################
@@ -50,7 +50,7 @@ def check_if_game_over():
 
 
 def game_over():
-    print("\nYou are lost all your lives.")
+    print("\nYou have no lives left.")
     print_and_stop("\nGAME OVER!!!!!!!!!!\n")
     quit()
 
@@ -93,7 +93,9 @@ def level_one_room_choice(): # level 1, in house
     match room:
         case 1:  # Hall
             print_and_pause("story...", 5)
-
+            add_relic(1)
+            lose_all_lives()
+            # ?
             # plus relics (add x)
         case 2:  # Kitchen
             print_and_pause("story...", 5)
@@ -119,24 +121,29 @@ def level_one_room_choice(): # level 1, in house
 
 #### LEVEL 2 PATH CHOICE
 def level_two_path_choice(): #In Forest, choose path (3 options)
-    print_and_pause("Which path do you coose to follow?.  You can choose ONE path...", 1)
-    print_and_pause("1 for path 1", 1)
-    print_and_pause("2 for path 2", 1)
-    print_and_pause("3 for path 3", 1)
+    print_and_pause("Your only options were to go Dead Ahead, Left or Right", 1)
+    print_and_pause("1 for Dead Ahead", 1)
+    print_and_pause("2 for Left", 1)
+    print_and_pause("3 for Right", 1)
 
     path = capture_int_response()
 
     match path:
-        case 1:  # Dark
-            print_and_pause("story...", 5)
+        case 1:  # Left
+            print_and_pause("You scuttled down the middle path, refusing to go any other direction. You thought it best to carry on in the direction you were already on.", 5)
+            print_and_pause("Surprisingly, the path was relatively easy to navigate with the torch, you felt like you were making a decent bit of distance from the demon. Along your journey, two relics were sat huddled together inside of a fallen birds nest, they looked two little owlets. You gently picked up the two relics and stuff them into your pocket and swiftly moved along. After a short while of paranoia-fuelled walking, you reached a main road that was illuminated with lamplight. You were alive, and somewhat safe.", 5)
+
+        case 2:  # LEFT PATH
+            print_and_pause("You decided to take the left path. The terrain was long and treacherous, it seemed to go on forever. On your journey, you find a singular relic encased in brambles that looked exactly like the one you previously stuffed into your pocket. You decided to stuff the relic into your pocket, too. Oh! What's this? You found a red vial with a mysterious fluid inside. You kept it to see what it would taste like.", 5)
+            print_and_pause("Eventually, your light flickered out on your journey to safety, forcing you to stop and relight the flame. The flint refused spark to life, and the rustling started to get closer and closer, the demons raspy breathing sounded like it was just a heartbeat away. You panicked and dropped your torch, running until you reached the edge of the forest and straight into lamplight on a eerily silent road. You were alive. For now.", 5)
+            add_relic(1) # +1 relic
+            # healing item? +1 life???
+
+        case 3:  # RIGHT PATH
+            print_and_pause("You decided to scurry down the right path. It didn't take long for you to reach what seemed to be a graveyard covered in a thick layer of fog. You entered the graveyard, ever so cautious of what you'd find.", 5)
+            print_and_pause("You explored around the yard of death until you found a peculiar open grave, the loose soil was still piled up next to it. As you wearily approached the grave, you saw that 'Harvey Staker' was engraved into the headstone. You began to panic, dropping your torch onto the ground out of shock and fear, causing the flame to go out. You turned to run, but it was too late - It was here... The demon had snuck up on you and dragged you down to the grave before you could scream. This was the end of Harvey Staker, may his soul rest in pieces.", 5)
             lose_all_lives()
             check_if_game_over()
-        case 2:  # Light 1
-            print_and_pause("story...", 5)
-            add_relic(1) # +1 relic
-        case 3:  # Light 2
-            print_and_pause("story...", 5)
-            add_relic(2) # +2 relics
         case _:
             print_and_pause(INALID_RESPONSE_INT, 1)
             level_two_path_choice()
@@ -283,12 +290,13 @@ def challenge_three():
 ################################
 # challenge 5
 def challenge_five():
-    print_and_pause("######### CHALLENGE  ###########", 2)
-
     num1 = random.randint(1, 12)
     num2 = random.randint(1, 12)
 
+    print_and_pause("######### CHALLENGE ###########", 2)
+
     print_and_pause(f"What is {num1} * {num2}?", 3)
+    
     answer = capture_int_response()
     if answer is None:
         print("Your response must be an integer number!\n")
@@ -348,7 +356,7 @@ def capture_int_response():
 ###################################
 # Challenge 1 (riddle)
 def challenge_one():
-    print_and_pause("This is Challenge 4: a riddle to solve:", 1)
+    print_and_pause("Here is a riddle to solve:", 1)
     print_and_pause("What is x and y, but not z?", 1)
     print_and_pause("1: Option 1", 1)
     print_and_pause("2: Option 2", 1)
@@ -374,12 +382,22 @@ def challenge_one():
 ######################
 # Challenge 2 (riddle)
 def challenge_two():
-    print_and_pause("This is Challenge 6: a riddle to solve:", 1)
-    print_and_pause("What is x and y, but not z?", 1)
-    print_and_pause("1: Option 1", 1)
-    print_and_pause("2: Option 2", 1)
-    print_and_pause("3: Option 3", 1)
+#     [CORRECT ANSWER]
+# "Your name" or "name" or "my name"
+# Troll: "Well done, small one. You have passed the test. You may proceed, but be careful, you may not succeed."
+# "The troll stepped aside and returned to stone, allowing you easy passage through the forest with your new torch."
 
+# [FIRST INCORRECT ANSWER]
+# Troll: "Sorry, little one. That is incorrect. One more chance or you'll never advance." [-1 life]
+
+# [SECOND INCORRECT ANSWER]
+# Troll: "My, my, little one... You have failed the test, you can no longer progress."
+# "The shadow demon caught up to you, killing you where you stand from behind. This was the end for Harvey Staker." [GAME OVER]
+    
+    print_and_pause("Here is a riddle to solve:", 1)
+    print_and_pause("Girl: 'Hey, Mister! Play a game with me! I tell you a widdle, and you figure out the answer, okay? Here we go! What room do ghosts hate going in?'", 1)
+
+    # string reponse....
     answer = capture_int_response()
 
     match answer:
@@ -478,25 +496,29 @@ level_complete(1)
 ### LEVEL 2 ############ FOREST ###################
 
 # story
-print_and_pause("START LEVEL 2 story", 4)
+print_and_pause("You ran for as far and as fast as you could, eventually coming to a halt in the centre of the forest. You looked around, the darkness hindered your ability to see. A tall stature loomed in front of you, or at least that's what you thought it was. You noticed there was a torch at the base of the statue. You take it. As you sparked the flame, your surroundings were illuminated, revealing that the statute was never a structure made of stone, it was a living troll!", 4)
 
+# story
+print_and_pause("The troll creaked and growled, its mighty voice bellowed through the forest.", 4)
+
+# ToDo: ANDREW -- riddle
 # challenge 2
 challenge_two()  # riddle
 
 # story
-print_and_pause("more story", 4)
+print_and_pause("As you trekked through the murky woodland, the trees and foliage began to rustle - twigs and branches loudly snapped all around you. The demon was still following you. You picked up the pace, running to a set of three paths further ahead. Your only options were to go Dead Ahead, Left or Right. You've never been in these neck of the woods before, so you had no idea where these paths would lead. Which do you choose? The clock is ticking...", 4)
 
 # choose forest path
 level_two_path_choice()
 
 # story
-print_and_pause("more story", 4)
+print_and_pause("There was a school up ahead, you thought that maybe someone was still inside judging from the cars in the parking lot, but something was blocking you from reaching the gates; you pushed forward, only to be met with the soul of a dead child. Her eyes were hollow with some sort of black fluid pouring from them. You were, understandably, horrified. The little girl spoke with a soft and playful tone.", 4)
 
-# challenge 4 maybe a find relic
+# challenge 3????? maybe a find relic
 challenge_four()  # riddle ???
 
 # story
-print_and_pause("more story", 4)
+print_and_pause("You watched the little ghost girl fade away, you blinked a couple times before making your way to the school doors.", 4)
 
 # end level 2
 level_complete(2)
