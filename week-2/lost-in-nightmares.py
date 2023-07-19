@@ -340,82 +340,78 @@ def challenge_one():
         1,
     )
 
+    correctAnswers = ["your name", "name", "my name"]
+    attempts = 0
 
-correctAnswers = ["your name", "name", "my name"]
-attempts = 0
+    while attempts < 2:
+        answer = input("type your answer: ")
+        answer.lower()
 
-while attempts < 2:
-    answer = input("type your answer: ")
-    answer.lower()
-
-    if answer in correctAnswers:
-        print_and_pause(
-            "\nTroll: 'Well done, small one. You have passed the test. You may proceed, but be careful, you may not succeed.'",
-            5,
-        )
-        break
-    else:
-        if attempts == 0:
+        if answer in correctAnswers:
             print_and_pause(
-                "\nSorry, little one. That is incorrect. One more chance or you'll never advance.",
+                "\nTroll: 'Well done, small one. You have passed the test. You may proceed, but be careful, you may not succeed.'",
                 5,
             )
-            subtract_lives(1)
-            check_if_game_over()
-        if attempts == 1:
-            print_and_pause(
-                "\nMy, my, little one... You have failed the test, you can no longer progress. \nThe shadow demon caught up to you, killing you where you stand from behind. This was the end for Harvey Staker.",
-                5,
-            )
-            lose_all_lives()
-            check_if_game_over()
+            break
+        else:
+            if attempts == 0:
+                print_and_pause(
+                    "\nSorry, little one. That is incorrect. One more chance or you'll never advance.",
+                    5,
+                )
+                subtract_lives(1)
+                check_if_game_over()
+            if attempts == 1:
+                print_and_pause(
+                    "\nMy, my, little one... You have failed the test, you can no longer progress. \nThe shadow demon caught up to you, killing you where you stand from behind. This was the end for Harvey Staker.",
+                    5,
+                )
+                lose_all_lives()
+                check_if_game_over()
 
-    attempts += 1
+        attempts += 1
 
 
 ######################
 # Challenge 2 (riddle)
 def challenge_two():
-    #     Girl: "Hey, Mister! Play a game with me! I tell you a widdle, and you figure out the answer, okay? Here we go! What woom do ghosts hate going in?"
-
-    # [ANSWER]
-    # "Living room", "the living room"
-    # Girl: "That's wight! Living wooms make us feel sad... Do you want to play again? No? Aw... Okay. Well, bye-bye, Mister! We can play again when you die! Don't take too long!"
-
-    # [FIRST INCORRECT ANSWER]
-    # Girl: "Nope! That's not wight, silly goose! I'll let you have one more try, otherwise you'll play with me forever! Hehe!" [-1 life]
-
-    # [SECOND INCORRECT ANSWER]
-    # Girl: "Oh no... You got it wrong again. That means Daddy will make you play with me! Here he is!"
-    # "You turned around to see the shadow demon looming over your now doomed person. It snapped your neck, killing you instantly. Looks like you're the girl's playmate for the rest of eternity." [GAME OVER]
-
-    # "You watched the little ghost girl fade away, you blinked a couple times before making your way to the school doors."
-
-    # [ENTERS TO LEVEL 3 - SCHOOL]
-
     print_and_pause("Here is a riddle to solve:", 1)
     print_and_pause(
         "\nGirl: 'Hey, Mister! Play a game with me! I tell you a widdle, and you figure out the answer, okay? Here we go! What room do ghosts hate going in?'",
-        1,
+        1
     )
 
-    # string reponse....
-    answer = capture_int_response()
 
-    match answer:
-        case 1:  # RIGHT ANSWER
-            print_and_pause(RIGHT_ANSWER, 1)
-        case 2:  # WRONG ANSWER
-            print_and_pause(WRONG_ANSWER, 1)
-            subtract_lives(1)
-        case 3:  # WRONG ANSWER
-            print_and_pause(WRONG_ANSWER, 1)
-            subtract_lives(1)
-        case _:
-            print_and_pause(INALID_RESPONSE_INT, 1)
-            challenge_two()
+    correctAnswers = ["living room", "the living room"]
+    attempts = 0
 
-    check_if_game_over()
+    while attempts < 2:
+        x = input("type answer: ")
+        x.lower()
+
+        if x in correctAnswers:
+            print_and_pause(
+                "\nGirl: 'That's wight! Living wooms make us feel sad... Do you want to play again? No? Aw... Okay. Well, bye-bye, Mister! We can play again when you die! Don't take too long!'",
+                5,
+            )
+            break
+        else:
+            if attempts == 0:
+                print_and_pause(
+                    "\nGirl: 'Nope! That's not wight, silly goose! I'll let you have one more try, otherwise you'll play with me forever! Hehe!'",
+                    5,
+                )
+                subtract_lives(1)
+                check_if_game_over()
+            if attempts == 1:
+                print_and_pause(
+                    "\nGirl: 'Oh no... You got it wrong again. That means Daddy will make you play with me! Here he is!\nYou turned around to see the shadow demon looming over your now doomed person. It snapped your neck, killing you instantly. Looks like you're the girl's playmate for the rest of eternity.",
+                    5,
+                )
+                lose_all_lives()
+                check_if_game_over()
+
+        attempts += 1
 
 
 def find_relic_level_one():
@@ -505,9 +501,9 @@ print_and_pause(
     "\nThe troll creaked and growled, its mighty voice bellowed through the forest.", 4
 )
 
-# ToDo: ANDREW -- riddle
-# challenge 1
-challenge_one()  # riddle
+
+# challenge 1, a riddle
+challenge_one()
 
 print_and_pause(
     "\nThe troll stepped aside and returned to stone, allowing you easy passage through the forest with your new torch.",
@@ -529,8 +525,9 @@ print_and_pause(
     4,
 )
 
-# challenge 2
-challenge_two()  # riddle ???
+# ToDo: ANDREW -- riddle
+# challenge 2, a riddle
+challenge_two()
 
 # story
 print_and_pause(
