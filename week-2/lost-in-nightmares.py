@@ -6,7 +6,7 @@ import random
 # standard messages
 WRONG_ANSWER = "Oh, no: You got it wrong!  You lose 1 life..."
 RIGHT_ANSWER = "Yay!  You got it right.  You keep all your lives..."
-INALID_RESPONSE_INT = ""
+INALID_RESPONSE_INT = "Your response is not valid.  Type an integer"
 INALID_RESPONSE_YES_NO = (
     "Your repose is invalid.  You must type either 'yes' or 'no'..."
 )
@@ -16,18 +16,21 @@ INALID_RESPONSE_YES_NO = (
 
 players_lives = 0  # property to track player's lives
 
-
 # function to add x lives to players_lives
 def add_lives(num_lives):
     global players_lives
     players_lives = players_lives + num_lives
     return
 
-
 # function to subtract x lives to players_lives
 def subtract_lives(num_lives):
     global players_lives
     players_lives = players_lives - num_lives
+    return
+
+def lose_all_lives():
+    global players_lives
+    players_lives = 0
     return
 
 
@@ -42,29 +45,27 @@ def check_if_game_over():
         game_over()
     else:
         print_and_stop(
-            f"You have {players_lives} lives left and {players_relics} relic(s)."
+            f"\nYou have {players_lives} lives and {players_relics} relic(s).\n"
         )
 
 
 def game_over():
-    print("You are dead GAME OVER!!!!!!!!!!")
+    print("\nYou are lost all your lives.")
+    print_and_stop("\nGAME OVER!!!!!!!!!!\n")
     quit()
 
 
-############################################
 
 ###########################################
 # Relic system
 
 players_relics = 0  # property to track player's lives
 
-
 # function to add x lives to players_lives
 def add_relic(num_relics):
     global players_relics
     players_relics = players_relics + num_relics
     return
-
 
 # function to subtract x lives to players_lives
 def remove_relic(num_relics):
@@ -73,8 +74,8 @@ def remove_relic(num_relics):
     return
 
 
-def what_relics_do_I_have():
-    print(f"you have {players_relics} following relics")
+# def what_relics_do_I_have():
+#     print(f"you have {players_relics} following relics")
 
 
 ##############################################
@@ -112,12 +113,13 @@ def level_one_room_choice(): # level 1, in house
 
 
     # tODO: pluralise sentence when necessary
-    print(f"You have {players_relics} relic(s).")
-    print_and_stop("")
+    check_if_game_over()
 
+
+
+#### LEVEL 2 PATH CHOICE
 def level_two_path_choice(): #In Forest, choose path (3 options)
     print_and_pause("Which path do you coose to follow?.  You can choose ONE path...", 1)
-
     print_and_pause("1 for path 1", 1)
     print_and_pause("2 for path 2", 1)
     print_and_pause("3 for path 3", 1)
@@ -127,13 +129,14 @@ def level_two_path_choice(): #In Forest, choose path (3 options)
     match path:
         case 1:  # Dark
             print_and_pause("story...", 5)
-            # die (lose all lives)
+            lose_all_lives()
+            check_if_game_over()
         case 2:  # Light 1
             print_and_pause("story...", 5)
-            # +1 relic
+            add_relic(1) # +1 relic
         case 3:  # Light 2
             print_and_pause("story...", 5)
-            # +2 relics
+            add_relic(2) # +2 relics
         case _:
             print_and_pause(INALID_RESPONSE_INT, 1)
             level_two_path_choice()
@@ -151,13 +154,14 @@ def level_three_drawer_choice(): #In School, choose drawer (3 options)
     match drawer:
         case 1:  # 
             print_and_pause("story...", 5)
-            # die (lose all lives)
+            add_relic(1) # +1 relic
         case 2:  # Light 1
             print_and_pause("story...", 5)
-            # +1 relic
+            add_relic(2) # +2 relics
         case 3:  # Light 2
             print_and_pause("story...", 5)
-            # +2 relics
+            lose_all_lives()
+            check_if_game_over()
         case _:
             print_and_pause(INALID_RESPONSE_INT, 1)
             level_three_drawer_choice()
@@ -167,7 +171,7 @@ def level_three_drawer_choice(): #In School, choose drawer (3 options)
 # prints message to the console and stops until users presses enter
 def print_and_stop(message):
     print(message)
-    input("press 'enter' to continue")
+    input("press 'enter' to continue...")
 
 
 # prints message to the console and pauses for x seconds
@@ -202,7 +206,10 @@ def level_complete(level):
 ##########################################
 
 def choose_difficulty_level():
-    difficulty_level = int(input("type:\n1 for easy\n2 for medium\n3 for hard"))
+    print("\nChoose difficulty level:")
+    print("1 for easy\n2 for medium\n3 for hard")
+
+    difficulty_level = capture_int_response()
 
     match difficulty_level:
         case 1:
@@ -213,7 +220,7 @@ def choose_difficulty_level():
             add_lives(3)
         case _:
             # todo
-            print("Your reponse was not valid............................")
+            print(INALID_RESPONSE_INT)
             choose_difficulty_level()  # recursive function
 
     print_and_stop(f"\nYou are ready to start the game with {players_lives} lives.")
@@ -276,12 +283,12 @@ def challenge_three():
 ################################
 # challenge 5
 def challenge_five():
-    print_and_stop("######### CHALLENGE 5 ###########")
+    print_and_pause("######### CHALLENGE  ###########", 2)
 
     num1 = random.randint(1, 12)
     num2 = random.randint(1, 12)
 
-    print(f"What is {num1} * {num2}?")
+    print_and_pause(f"What is {num1} * {num2}?", 3)
     answer = capture_int_response()
     if answer is None:
         print("Your response must be an integer number!\n")
@@ -303,17 +310,18 @@ def challenge_five():
 
 ################################
 # challenge 2 maths
-def challenge_two_____():
-    print_and_stop("######### CHALLENGE 2 ###########")
-
+def challenge_two_():
     num1 = random.randint(1, 20)
     num2 = random.randint(5, 30)
+    
+    print_and_pause("######### CHALLENGE ###########", 2)
 
-    print(f"What is {num1} + {num2}?")
+    print_and_pause(f"What is {num1} + {num2}?", 3)
+
     answer = capture_int_response()
     if answer is None:
         print("Your response must be an integer number!\n")
-        challenge_two_____()
+        challenge_two_()
 
     correct_answer = num1 + num2
 
@@ -420,8 +428,7 @@ def find_relic_level_one():
 ########################################################
 # MAIN
 
-
-print_and_stop("Welcome to LOST IN NIGHTMARES")
+print_and_stop("Welcome to LOST IN NIGHTMARES\n")
 
 choose_difficulty_level()
 
@@ -430,12 +437,17 @@ choose_difficulty_level()
 
 # story start
 print_and_pause(
-    "Your name is Harvey Staker - an experienced hunter who fended for himself in the middle of nowhere. It was late, and you were tired from a hard day of poaching.\n",
+    "\nYour name is Harvey Staker - an experienced hunter who fended for himself in the middle of nowhere. It was late, and you were tired from a hard day of poaching.\n",
     5,
 )
 
 print_and_pause(
-    "On your usual route home, a heavy storm began to pick up, you thought it would be best to hurry so you wouldn't get soaked. As you scurried on back to your house, you tripped over an old, thick vine that laced the blackening soil beneath a decaying tree. You fell through the ground with a hefty thump, groaning in pain and shock as you hit the bottom. You sit up and shake your head, letting your vision realign itself for a moment. Once your vision returned, you noticed a dark looking object at the end of the room, it looked like an ancient relic.\n",
+    "On your usual route home, a heavy storm began to pick up, you thought it would be best to hurry so you wouldn't get soaked. As you scurried on back to your house, you tripped over an old, thick vine that laced the blackening soil beneath a decaying tree. You fell through the ground with a hefty thump, groaning in pain and shock as you hit the bottom. You sit up and shake your head, letting your vision realign itself for a moment.\n",
+    5,
+)
+
+print_and_pause(
+    "Once your vision returned, you noticed a dark looking object at the end of the room, it looked like an ancient relic.\n",
     5,
 )
 
@@ -443,7 +455,7 @@ find_relic_level_one()
 
 # story
 print_and_pause(
-    "After half an hour of walking, you finally reached your home. It was locked up tight, so you pulled out your keys and let yourself in. The lights flickered on, colouring the white walls with a yellow hue. You kicked off your muddy work boots and hung up your coat. Upon entering the living room, you spot the relic sitting on your shelf: 'that's odd', you thought, certain that you never placed it there. You began feeling an uneasy chill run up your spine.\n",
+    "\nAfter half an hour of walking, you finally reached your home. It was locked up tight, so you pulled out your keys and let yourself in. The lights flickered on, colouring the white walls with a yellow hue. You kicked off your muddy work boots and hung up your coat. Upon entering the living room, you spot the relic sitting on your shelf: 'that's odd', you thought, certain that you never placed it there. You began feeling an uneasy chill run up your spine.\n",
     3,
 )
 
@@ -451,9 +463,13 @@ print_and_pause(
 level_one_room_choice()
 
 # story
+print_and_pause("more story", 4)
 
 # challenge 1
 challenge_one() #riddle
+
+# story
+print_and_pause("more story", 4)
 
 # level complete
 level_complete(1)
@@ -462,21 +478,25 @@ level_complete(1)
 ### LEVEL 2 ############ FOREST ###################
 
 # story
+print_and_pause("START LEVEL 2 story", 4)
 
 # challenge 2
 challenge_two()  # riddle
 
 # story
+print_and_pause("more story", 4)
 
 # choose forest path
 level_two_path_choice()
 
 # story
+print_and_pause("more story", 4)
 
 # challenge 4 maybe a find relic
 challenge_four()  # riddle ???
 
 # story
+print_and_pause("more story", 4)
 
 # end level 2
 level_complete(2)
@@ -485,23 +505,27 @@ level_complete(2)
 ### LEVEL 3 ############ SCHOOL ###################
 
 # story
+print_and_pause("start Level 3 story", 4)
 
 # challenge
-challenge_five()  # maths
+challenge_five()  # maths lose life if wrong
 
 # story
+print_and_pause("more story", 4)
 
 # choose drawer in schoolroom
-level_three_drawer_choice()
+level_three_drawer_choice() # three chogain relics or die
 
 # story
+print_and_pause("more story", 4)
 
 # challenge 6
 challenge_five()  # maths
 
 # story
+print_and_pause("more story", 4)
 
 # end level 2
-level_complete(2)
+level_complete(3)
 
 # ----BOSS BATTLE----
