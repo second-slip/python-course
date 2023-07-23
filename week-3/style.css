@@ -1,0 +1,48 @@
+
+@import url(https://unpkg.com/open-props/open-props.min.css);
+@import url(https://unpkg.com/open-props/normalize.min.css);
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.main-section {
+    text-align: center;
+}
+
+ul:has(input:not(:checked)) {
+  background: var(--surface-1);
+  border-color: var(--red-2);
+}
+
+input {
+  accent-color: var(--green-8);
+}
+
+li {
+  display: flex;
+  gap: var(--size-2);
+}
+
+ul {
+  box-shadow: var(--shadow-5);
+  padding: var(--size-4);
+  border-radius: var(--radius-3);
+  border: 2px solid green;
+  list-style-type: none;
+  display: grid;
+  gap: var(--size-2);
+  background: var(--green-1);
+  transition: all 0.2s ease;
+}
+
+/* The double negative approach */
+/* ul:not(:has(input:not(:checked))) { background: lime } */
+/* ul:not(:has(> li:not(.item))) { background: blue } */
+
+:checked + label {
+  font-style: italic;
+  text-decoration: line-through;
+}
