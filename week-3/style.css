@@ -1,17 +1,23 @@
-@import url(https://unpkg.com/open-props/open-props.min.css);
-@import url(https://unpkg.com/open-props/normalize.min.css);
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+/* @import url(https://unpkg.com/open-props/open-props.min.css);
+@import url(https://unpkg.com/open-props/normalize.min.css); */
 
-body {
-  /* border: 1px solid blue; 
-  display: grid;
 
-  /* margin: 1% 10%; */
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
-  /* place-items: center; */
-  /* min-height: 100vh; */
-  /* text-align: center; */
-  /* padding: var(--size-4); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap'); */
+
+
+
+nav,
+.main-section {
+  font-family: 'Lumanosimo', cursive;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
+
+/* body { } */
 
 #wrap {
   margin: 0 auto;
@@ -28,6 +34,8 @@ nav {
 nav ul {
   margin: 0;
   padding: 0;
+  padding-left: 5%;
+  padding-right: 5%;
   display: flex;
 }
 
@@ -70,27 +78,12 @@ nav ul li a:hover {
   /* padding: 12px; */
 }
 
-/* .brand {
-  padding: 12px 24px;
-}
 
-.item {
-  padding: 12px;
-} */
-
-#navbar a {
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#navbar a:hover {
-  /* color: white; */
-}
 
 
 
 .main-section {
-  background-color: pink;
+  background-color: rgb(255, 249, 192);
   display: grid;
   place-items: center;
   /* min-height: 100vh; */
@@ -101,22 +94,78 @@ nav ul li a:hover {
 
 .product-images-gallery {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  margin: 1% 15%;
+
+  /* top/bottom / right/left */
+}
+
+.product-image {
+  max-height: 162px;
+  min-width: 198px;
+  padding: 3% 3% 1%;
+  /* top - right/left - bottom */
+}
+
+.product-price {
+  margin-bottom: 5%;
 }
 
 
 
-
-
-
-
-img {
-  padding: 25px 5px;
+.home-image {
+  padding: 3% 3%;
 }
 
+/* ToDo: change this */
+/* applies to all elements on all pages, which is not good */
 h1,
 p {
-  padding: 25px 5px;
+  padding: 25px 30px;
+}
+
+
+.footer {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 4px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
 }
 
 
