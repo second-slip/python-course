@@ -1,16 +1,130 @@
-
 @import url(https://unpkg.com/open-props/open-props.min.css);
 @import url(https://unpkg.com/open-props/normalize.min.css);
 
 body {
+  /* border: 1px solid blue; 
   display: grid;
-  place-items: center;
-  min-height: 100vh;
+
+  /* margin: 1% 10%; */
+
+  /* place-items: center; */
+  /* min-height: 100vh; */
+  /* text-align: center; */
+  /* padding: var(--size-4); */
 }
 
-.main-section {
-    text-align: center;
+#wrap {
+  margin: 0 auto;
+  border: 1px solid blue;
+  width: 90%;
 }
+
+nav {
+  background-color: black;
+  margin: 0;
+  overflow: hidden;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+nav ul li a {
+  color: white;
+  /* background-color: red; */
+  display: block;
+  line-height: 1em;
+  padding: 1em 1em;
+  text-decoration: none;
+}
+
+nav ul li:first-child {
+  margin-right: auto;
+}
+
+nav ul li a.logo {
+  /* background-color: green; */
+}
+
+nav ul li a:hover {
+  /* background-color: blue; */
+}
+
+#navbar {
+  background-color: yellow;
+  display: flex;
+  justify-content: flex-start;
+  /* background-color: chartreuse; */
+  /* background-color:rgb(9, 208, 52); */
+  /* default is row, column stacks */
+  /* flex-direction: column;  */
+  /* responsive */
+  /* flex-wrap: wrap; */
+  /* padding: 12px; */
+}
+
+/* .brand {
+  padding: 12px 24px;
+}
+
+.item {
+  padding: 12px;
+} */
+
+#navbar a {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar a:hover {
+  /* color: white; */
+}
+
+
+
+.main-section {
+  background-color: pink;
+  display: grid;
+  place-items: center;
+  /* min-height: 100vh; */
+  text-align: center;
+
+  /* padding: var(--size-4); */
+}
+
+.product-images-gallery {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+
+
+
+
+
+img {
+  padding: 25px 5px;
+}
+
+h1,
+p {
+  padding: 25px 5px;
+}
+
+
+
+
+
+
+
 
 ul:has(input:not(:checked)) {
   background: var(--surface-1);
@@ -42,7 +156,7 @@ ul {
 /* ul:not(:has(input:not(:checked))) { background: lime } */
 /* ul:not(:has(> li:not(.item))) { background: blue } */
 
-:checked + label {
+:checked+label {
   font-style: italic;
   text-decoration: line-through;
 }

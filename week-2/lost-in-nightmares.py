@@ -10,6 +10,60 @@ INALID_RESPONSE_YES_NO = (
     "\nYour repose is invalid.  You must type either 'yes' or 'no'..."
 )
 
+#region Miscellaneous functions
+
+def capture_int_response():
+    response = input("Hint: type your answer as an integer (e.g: 1 or 2 or 3) here: ")
+    return int(response) if response.isdigit() else None
+
+#########################################
+def level_complete(level):
+    if players_lives > 1:
+        print(
+            f"You have successfully completed level {level} with {players_lives} lives left and {players_relics} relics!"
+        )
+    else:
+        print(
+            f"You have successfully completed level {level} with {players_lives} life left and {players_relics} relics!"
+        )
+
+##########################################
+def choose_difficulty_level():
+    print("\nChoose difficulty level:")
+    print("1 for easy\n2 for medium\n3 for hard")
+
+    difficulty_level = capture_int_response()
+
+    match difficulty_level:
+        case 1:
+            add_lives(5)
+        case 2:
+            add_lives(4)
+        case 3:
+            add_lives(3)
+        case _:
+            # todo
+            print(INALID_RESPONSE_INT)
+            choose_difficulty_level()  # recursive function
+
+    print_and_stop(f"\nYou are ready to start the game with {players_lives} lives.")
+
+def game_achievement_score():
+    if players_relics > 4:
+        print_and_pause(f"\nYou found {players_relics} relics")
+        print_and_stop("\nYou completed the game a high score!  Very well done")
+
+    else:
+        print_and_pause(f"\nYou found {players_relics} relics")
+        print_and_stop(
+            "You completed the game, but with a low score.  Try to improve your score next time."
+        )
+
+
+
+#endregion
+
+
 # region health system
 
 players_lives = 0  # property to track player's lives
@@ -213,7 +267,6 @@ def level_three_book_choice():
 
 # region prining functions
 
-
 # prints message to the console and stops until users presses enter
 def print_and_stop(message):
     print(message)
@@ -237,44 +290,6 @@ def pause(seconds):
 
 
 # endregion
-
-def capture_int_response():
-    response = input("Hint: type your answer as an integer (e.g: 1 or 2 or 3) here: ")
-    return int(response) if response.isdigit() else None
-
-
-#########################################
-def level_complete(level):
-    if players_lives > 1:
-        print(
-            f"You have successfully completed level {level} with {players_lives} lives left and {players_relics} relics!"
-        )
-    else:
-        print(
-            f"You have successfully completed level {level} with {players_lives} life left and {players_relics} relics!"
-        )
-
-
-##########################################
-def choose_difficulty_level():
-    print("\nChoose difficulty level:")
-    print("1 for easy\n2 for medium\n3 for hard")
-
-    difficulty_level = capture_int_response()
-
-    match difficulty_level:
-        case 1:
-            add_lives(5)
-        case 2:
-            add_lives(4)
-        case 3:
-            add_lives(3)
-        case _:
-            # todo
-            print(INALID_RESPONSE_INT)
-            choose_difficulty_level()  # recursive function
-
-    print_and_stop(f"\nYou are ready to start the game with {players_lives} lives.")
 
 
 #region Level 1 challenges
@@ -530,20 +545,6 @@ def riddle_challenge_two():
         attempts += 1
 
 #endregion
-
-
-
-
-def game_achievement_score():
-    if players_relics > 4:
-        print_and_pause(f"\nYou found {players_relics} relics")
-        print_and_stop("\nYou completed the game a high score!  Very well done")
-
-    else:
-        print_and_pause(f"\nYou found {players_relics} relics")
-        print_and_stop(
-            "You completed the game, but with a low score.  Try to improve your score next time."
-        )
 
 
 # region Level one game play
