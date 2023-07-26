@@ -83,18 +83,13 @@ nav ul li a:hover {
 }
 
 
-
-
-
-
-
 .main-section {
   background-color: greenyellow;
   display: flex;
   flex-direction: column;
   place-items: center;
   margin: 0;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   text-align: center;
 }
 
@@ -145,14 +140,14 @@ p {
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  place-items: left;
+  /* place-items: left; */
   align-items: left;
-
+;
 
 }
 
 .form-group {
-  margin-bottom: 10px;
+  margin-bottom: 5%;
 }
 
 input, label {
@@ -167,20 +162,20 @@ input, label {
 
 }
 
-.fa {
+/* .fa {
   padding: 20px;
   font-size: 30px;
   width: 50px;
   text-align: center;
   text-decoration: none;
   margin: 5px 4px;
-}
+} */
 
 .fa:hover {
   opacity: 0.7;
 }
 
-.fa-facebook {
+/* .fa-facebook {
   background: #3B5998;
   color: white;
 }
@@ -188,9 +183,9 @@ input, label {
 .fa-twitter {
   background: #55ACEE;
   color: white;
-}
+} */
 
-.fa-instagram {
+/* .fa-instagram {
   background: #125688;
   color: white;
 }
@@ -198,4 +193,4 @@ input, label {
 .fa-linkedin {
   background: #007bb5;
   color: white;
-}
+} */
