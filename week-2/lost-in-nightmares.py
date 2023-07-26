@@ -10,11 +10,13 @@ INALID_RESPONSE_YES_NO = (
     "\nYour repose is invalid.  You must type either 'yes' or 'no'..."
 )
 
-#region Miscellaneous functions
+# region Miscellaneous functions
+
 
 def capture_int_response():
     response = input("Hint: type your answer as an integer (e.g: 1 or 2 or 3) here: ")
     return int(response) if response.isdigit() else None
+
 
 #########################################
 def level_complete(level):
@@ -26,6 +28,7 @@ def level_complete(level):
         print(
             f"You have successfully completed level {level} with {players_lives} life left and {players_relics} relics!"
         )
+
 
 ##########################################
 def choose_difficulty_level():
@@ -42,26 +45,32 @@ def choose_difficulty_level():
         case 3:
             add_lives(3)
         case _:
-            # todo
             print(INALID_RESPONSE_INT)
             choose_difficulty_level()  # recursive function
 
     print_and_stop(f"\nYou are ready to start the game with {players_lives} lives.")
 
+
 def game_achievement_score():
+    print_and_pause(f"\nYou found {players_relics} relics", 1)
+
     if players_relics > 4:
-        print_and_pause(f"\nYou found {players_relics} relics")
         print_and_stop("\nYou completed the game a high score!  Very well done")
 
     else:
-        print_and_pause(f"\nYou found {players_relics} relics")
         print_and_stop(
             "You completed the game, but with a low score.  Try to improve your score next time."
         )
 
+def credits():
+    print_and_pause("\nThank you for playing Lost in Nightmares!", 2)
+    print_and_pause("\nCREDITS", 2)
+    print_and_pause("Gezer Santos - Story writer and group organiser", 1)
+    print_and_pause("Leah Collins-Tait - Story writer and game planner", 1)
+    print_and_pause("Andrew Cross - Coder and play tester", 1)
 
 
-#endregion
+# endregion
 
 
 # region health system
@@ -215,7 +224,6 @@ def level_two_path_choice():
             print_and_pause("\nYou gained a relic")
             add_relic(1)  # +1 relic
 
-
         case 3:  # RIGHT PATH
             print_and_pause(
                 "\nYou decided to scurry down the right path. It didn't take long for you to reach what seemed to be a graveyard covered in a thick layer of fog. You entered the graveyard, ever so cautious of what you'd find.",
@@ -267,6 +275,7 @@ def level_three_book_choice():
 
 # region prining functions
 
+
 # prints message to the console and stops until users presses enter
 def print_and_stop(message):
     print(message)
@@ -292,7 +301,8 @@ def pause(seconds):
 # endregion
 
 
-#region Level 1 challenges
+# region Level 1 challenges
+
 
 def find_relic_level_one():
     print_and_pause("Do you want to take the relic?", 1)
@@ -320,10 +330,12 @@ def find_relic_level_one():
 
     check_if_game_over()
 
-#endregion
+
+# endregion
 
 
-#region Level 3 challenges
+# region Level 3 challenges
+
 
 ################################
 def blue_book_maths_challenge():
@@ -460,10 +472,11 @@ def green_book_biology_challenge():
 
         attempts += 1
 
-#endregion
+
+# endregion
 
 
-#region Level 2 challenges
+# region Level 2 challenges
 
 # Challenge 1 (riddle)
 def riddle_challenge_one():
@@ -544,7 +557,8 @@ def riddle_challenge_two():
 
         attempts += 1
 
-#endregion
+
+# endregion
 
 
 # region Level one game play
@@ -593,7 +607,6 @@ def level_one():
 # region Level two game play
 ### LEVEL 2 ############ FOREST ###################
 def level_two():
-
     # story
     print_and_pause(
         "\nYou ran for as far and as fast as you could, eventually coming to a halt in the centre of the forest. You looked around, the darkness hindered your ability to see. A tall stature loomed in front of you, or at least that's what you thought it was. You noticed there was a torch at the base of the statue. You take it. As you sparked the flame, your surroundings were illuminated, revealing that the statute was never a structure made of stone, it was a living troll!",
@@ -649,10 +662,9 @@ def level_two():
 # region Level three game play
 ### LEVEL 3 ############ SCHOOL ###################
 def level_three():
-
     # story
     print_and_pause(
-        "As you made your hasty ascent up the school steps, you peer into the windows of the school - there was nothing but thick gloom that consumed each room, not a single trace of human life. You thought it was odd to have cars parked outside if no-one was here, this was the only building around, too. You tried the front doors, and as you expected, they were locked up tight. You decided to look for another way in",
+        "\nAs you made your hasty ascent up the school steps, you peer into the windows of the school - there was nothing but thick gloom that consumed each room, not a single trace of human life. You thought it was odd to have cars parked outside if no-one was here, this was the only building around, too. You tried the front doors, and as you expected, they were locked up tight. You decided to look for another way in",
         4,
     )
 
@@ -686,9 +698,20 @@ def level_three():
         4,
     )
 
+    # story
     print_and_pause(
         "\nYou finally made your way into the school's lobby with your pockets full of objects you've found on the way, you felt the presence of impending doom as you stood in the large, ruined room. This school was the complete opposite of what you originally thought, it was falling apart, and at any moment it felt as if it was going to come toppling down, and not a slither of human life. The shadow demon burst through the glass double doors of the lobby, you had a second to see what you could do against this monster.\n",
         4,
+    )
+
+    print_and_pause(
+        "\nYou legged it out of the school and rushed down the steps as the rickety building started to collapse under its own weight, narrowly escaping being crushed under the debris. You watched the school burn to the ground. You were finally safe, and just in time for the sun to rise once more. After tonight, you were able to eventually find peace. Your nightmare had ended.",
+        4,
+    )
+
+    print_and_pause(
+        "That was the tale of Harvey Staker, the man who fought against impossible odds and came out victorious.",
+        3,
     )
 
     # end level 2
@@ -712,3 +735,6 @@ level_two()
 level_three()
 
 game_achievement_score()
+
+credits()
+
